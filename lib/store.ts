@@ -1,8 +1,8 @@
 import mariadb, { PoolConnection } from 'mariadb';
 import { dbconfig } from './dbconfig'; 
-const env = process.env.ENV || 'dev';
+const env = process.env.NODE_ENV || 'dev';
 
-class Store {
+export class Store {
     private sqlPool = mariadb.createPool(dbconfig[env].sql);
 
     public async queryRDB(query: string) {
@@ -44,6 +44,10 @@ class Store {
     public async end() {
         await this.sqlPool.end();
     } 
+
+    public restart () {
+        this.sqlPool = mariadb.createPool(dbconfig[env].sql);
+    }
 }
 
 export const store = new Store();

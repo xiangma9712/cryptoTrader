@@ -4,7 +4,7 @@ import crypto from 'crypto';
 const key = process.env.API_KEY;
 const secret = process.env.API_SECRET;
 
-class LightningApi {
+export class LightningApi {
     key: string;
     secret: string;
     api: AxiosInstance;

@@ -6,7 +6,8 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "test": "mocha --require ts-node/register --watch-extensions ts \"test/**/*.ts\"",
-    "build": "tsc"
+    "build": "tsc",
+    "start": "ts-node index.ts"
   },
   "repository": {
     "type": "git",
