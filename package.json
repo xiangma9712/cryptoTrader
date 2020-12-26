@@ -7,7 +7,10 @@
   "scripts": {
     "test": "mocha --require ts-node/register --watch-extensions ts \"test/**/*.ts\"",
     "build": "tsc",
-    "start": "ts-node index.ts"
+    "postbuild": "scp -r  dist/* raspi:/home/pi/crypto-trader/dist && scp package* raspi:/home/pi/crypto-trader",
+    "prestart": "npm ci --production",
+    "start": "NODE_ENV=raspi node dist/index.js",
+    "start:dev": "ts-node index.ts"
   },
   "repository": {
     "type": "git",
